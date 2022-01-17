@@ -1,0 +1,30 @@
+body {
+  font-family: 'Poppins', sans-serif !important;
+  margin: 0;
+}
+.radius {
+  border-radius: 20px !important;
+}
+
+.text-orange {
+  color: #F17228 !important;
+}
+.bg-orange{
+  background-color: #F17228;
+}
+.fw-500{
+  font-weight: 500 !important;
+}
+.fw-600{
+  font-weight: 600 !important;
+}
+.fw-700{
+  font-weight: 700 !important; 
+}
+.fw-900{
+  font-weight: 900 !important;
+}
+.leaflet-container{
+  width: 100vw;
+  height: 50vh;
+}
