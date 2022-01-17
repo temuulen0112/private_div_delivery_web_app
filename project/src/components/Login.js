@@ -5,9 +5,23 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Col from "react-bootstrap/Col";
 import Button from "./Button";
 import { NavLink } from "react-router-dom";
+import { userService } from "../services/userService";
 
 const Login = () => {
-  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    userService
+      .loginUser({
+        email: e.target.formEmail.value,
+        password: e.target.formPassword.value,
+      })
+      .then((res) => {
+        res.json()
+      })
+      .then((res) => {
+        console.log(res)
+      })
+  }
   const [showPassword, setShowPassword] = useState(false)
   function handlePassword() {
     setShowPassword(!showPassword);
@@ -15,7 +29,7 @@ const Login = () => {
 
   return (
     <div className="App-header1">
-      <Form>
+      <Form onSubmit={handleSubmit}>
         <Form.Label className="reBorder"></Form.Label>
         <Form.Label className="recoverPass">НЭВТРЭХ</Form.Label>
         <Form.Group className="mb-3" controlId="formEmail">
@@ -27,7 +41,7 @@ const Login = () => {
           />
         </Form.Group>
         <Col xs="auto">
-          <Form.Group className="mb-3 ">
+          <Form.Group className="mb-3" controlId="formPassword">
             <Form.Label className="registerName">Нууц үг</Form.Label>
             <InputGroup className="mb-2">
               <Form.Control
@@ -60,7 +74,7 @@ const Login = () => {
             </Form.Text>
           </Form.Group>
         </Col>
-        <Button value="НЭВТРЭХ" className="default" />
+        <Button value="НЭВТРЭХ" className="default" type={"submit"}/>
         <p className="text-center my-3">эсвэл</p>
         <NavLink to="/register">
           <Button value="БҮРТГҮҮЛЭХ" className="active-button" />
