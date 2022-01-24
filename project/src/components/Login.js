@@ -6,8 +6,11 @@ import Col from "react-bootstrap/Col";
 import Button from "./Button";
 import { NavLink } from "react-router-dom";
 import { userService } from "../services/userService";
+import { useUser } from "../context/userContext";
 
 const Login = () => {
+  const [cred, setCred] = useState();
+  const [user, setUser] = useUser();
   const handleSubmit = (e) => {
     e.preventDefault();
     userService
@@ -15,11 +18,21 @@ const Login = () => {
         email: e.target.formEmail.value,
         password: e.target.formPassword.value,
       })
-      .then((res) => {
+      .then((res) => 
         res.json()
-      })
-      .then((res) => {
-        console.log(res)
+      )
+      .then((data) => {
+        if(data.success) {
+          userService.userInfoStorage(data);
+          setUser({
+            userName: data.data.name,
+            email: data.data.email,
+            address: data.data.address
+          })
+          // history.pushState("/");
+        } else{
+          alert("Failed to optain login")
+        }
       })
   }
   const [showPassword, setShowPassword] = useState(false)
@@ -78,6 +91,7 @@ const Login = () => {
         <p className="text-center my-3">эсвэл</p>
         <NavLink to="/register">
           <Button value="БҮРТГҮҮЛЭХ" className="active-button" />
+          {/* <Button value="Test" /> */}
         </NavLink>
       </Form>
     </div>

@@ -1,11 +1,17 @@
 import React, { useEffect, useState } from "react";
 import Cards from "./Card";
+import { foodService } from '../services/foodService'
 function MainDishMenu() {
   const [mainMenu, setMainMenu] = useState([]);
   useEffect(() => {
-    fetch("../data/foods.json")
-      .then((response) => response.json())
-      .then((data) => setMainMenu(data));
+    foodService
+    .getAllFood()
+    .then((res) => 
+      res.json()
+    )
+    .then((data) => {
+      console.log(data.data)
+    })
   }, []);
   let menu = mainMenu.filter((m) => m.category === "Үндсэн хоол").slice(0, 4);
   return (

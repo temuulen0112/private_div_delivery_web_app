@@ -7,13 +7,13 @@ import "./css/Area.css"
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './css/modal.css'
-import ModalProvider from './context/ModalContext'
+import { UserProvider } from "./context/userContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <ModalProvider>
+    <UserProvider>
       <App />
-    </ModalProvider>
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

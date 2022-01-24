@@ -13,8 +13,6 @@ const Register = () => {
       .registerUser({
         email: e.target.formEmail.value,
         password: e.target.formPassword.value,
-        name: "PANINI",
-        address: "Mongolia"
       })
       .then((res) => {
         res.json()
