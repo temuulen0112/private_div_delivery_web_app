@@ -7,6 +7,6 @@ const getAllFood = async () => {
         // body: JSON.stringify()
     })
 }
-export const foodService = {
+export const otherServices = {
     getAllFood
 }

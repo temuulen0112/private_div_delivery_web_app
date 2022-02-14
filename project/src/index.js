@@ -7,12 +7,15 @@ import "./css/Area.css"
 import App from "./App";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './css/modal.css'
-import { UserProvider } from "./context/userContext";
+import { UserProvider } from "./context/UserContext";
+import { FoodProvider } from "./context/FoodContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-      <App />
+      <FoodProvider>
+        <App />
+      </FoodProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")

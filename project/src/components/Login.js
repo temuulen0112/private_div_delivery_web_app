@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import Button from "./Button";
 import { NavLink } from "react-router-dom";
 import { userService } from "../services/userService";
-import { useUser } from "../context/userContext";
+import { useUser } from "../context/UserContext";
 
 const Login = () => {
   const [cred, setCred] = useState();
@@ -87,7 +87,7 @@ const Login = () => {
             </Form.Text>
           </Form.Group>
         </Col>
-        <Button value="НЭВТРЭХ" className="default" type={"submit"}/>
+        <Button value="НЭВТРЭХ" className="default" type={"submit"} />
         <p className="text-center my-3">эсвэл</p>
         <NavLink to="/register">
           <Button value="БҮРТГҮҮЛЭХ" className="active-button" />
