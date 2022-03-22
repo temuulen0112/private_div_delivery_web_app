@@ -1,17 +1,21 @@
 import Card from "../Card";
 import { useEffect, useState } from "react";
+import { useFood } from "../../context/FoodContext";
 
 const Sales = () => {
-  const [sale, setSale] = useState([]);
+  const [foods] = useFood();
+  const [sales, setSales] = useState([]);
   useEffect(() => {
-    fetch("../data/foods.json")
-      .then((response) => response.json())
-      .then((data) => setSale(data));
-  }, [Sales]);
-  let mainSales = sale.filter((s) => s.sales === true);
+    setSales(
+      foods
+        .filter((p) => {
+          return p.category !== "Хямдралтай"
+        })
+    )
+  }, [foods]);
   return (
     <div className="row">
-      {mainSales.map((data, index) => (
+      {sales.map((data, index) => (
         <div className="col-6 col-md-3">
           <Card
               key={index}
@@ -19,7 +23,7 @@ const Sales = () => {
               price={data.price}
               portion={data.portion}
               stock={data.stock}
-              image={data.thumb_img}
+              image={data.image}
               discount={data.sales}
               percentage={data.discount_percentage}
               recipe={data.recipe}

@@ -1,18 +1,23 @@
 import React from "react";
 import Cards from "../Card";
 import { useEffect, useState } from "react";
+import { useFood } from "../../context/FoodContext";
 
 function Main() {
+  const [foods] = useFood();
   const [mainMenu, setMainMenu] = useState([]);
   useEffect(() => {
-    fetch("../data/foods.json")
-      .then((response) => response.json())
-      .then((data) => setMainMenu(data));
-  }, []);
-  let menu = mainMenu.filter((m) => m.category === "Үндсэн хоол");
+    setMainMenu(
+      foods
+        .filter((p) => {
+          return p.category === "Үндсэн хоол"
+        })
+    )
+  }, [foods]);
+
   return (
     <div className="row">
-      {menu.map((data, index) => (
+      {mainMenu.map((data, index) => (
         <div className="col-6 col-md-3">
           <Cards
                key={data.index}
@@ -20,7 +25,7 @@ function Main() {
                price={data.price}
                portion={data.portion}
                stock={data.stock}
-               image={data.thumb_img}
+               image={data.image}
                discount={data.sales}
                percentage={data.discount_percentage}
                recipe={data.recipe}

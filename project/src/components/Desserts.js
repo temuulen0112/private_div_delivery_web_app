@@ -13,7 +13,6 @@ function Desserts() {
         })
         .slice(0, 4)
     )
-      
   }, [foods]);
 
   // useEffect(() => {
@@ -28,19 +27,18 @@ function Desserts() {
 
   return (
     <div className="row">
-      {desserts.map((data) => {
+      {desserts.map((data, index) => {
           <div className="col-6 col-md-3" id="category-card">
             <Cards
-              key={data.index}
-              data = {data}
-              // name={data.name}
-              // price={data.price}
-              // portion={data.portion}
-              // stock={data.stock}
-              // image={data.thumb_img}
-              // discount={data.sales}
-              // percentage={data.discount_percentage}
-              // recipe={data.recipe}
+              key={index}
+              name={data.name}
+              price={data.price}
+              portion={data.portion}
+              stock={data.stock}
+              image={data.image}
+              discount={data.sales}
+              percentage={data.discount_percentage}
+              recipe={data.recipe}
             />
           </div>
       })}

@@ -12,21 +12,20 @@ function MainDishMenu() {
         })
         .slice(0, 4)
     )
-      
   }, [foods]);
-  // let menu = mainMenu.filter((m) => m.category === "Үндсэн хоол").slice(0, 4);
   return (
     <div className="row">
-      {mainMenu.map((data) => (
+      {mainMenu.map((data, index) => (
         <div className="col-6 col-md-3" id="category-card">
           <Cards
-            // name={data.name}
-            // price={data.price}
-            // portion={data.portion}
-            // stock={data.stock}
-            // recipe={data.recipe}
-            // image={data.thumb_img}
-            // category={data.category}
+          key= {index}
+            name={data.name}
+            price={data.price}
+            portion={data.portion}
+            stock={data.stock}
+            recipe={data.recipe}
+            image={data.image}
+            category={data.category}
             data = {data} 
           />
         </div>

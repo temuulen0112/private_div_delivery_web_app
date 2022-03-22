@@ -1,17 +1,24 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import Cards from "./Card";
+import { useFood } from "../context/FoodContext";
+
 function SaladMenu() {
-  const [mainMenu, setMainMenu] = useState([]);
+  const [foods] = useFood();
+  const [saladMenu, setSaladMenu] = useState([]);
   useEffect(() => {
-    fetch("../data/foods.json")
-      .then((response) => response.json())
-      .then((data) => setMainMenu(data));
-  }, []);
-  let menu = mainMenu.filter((m) => m.category === "Салад ба зууш").slice(0, 4);
+    setSaladMenu(
+      foods
+        .filter((p) => {
+          return p.category === "Салад ба зууш"
+        })
+        .slice(0, 4)
+    )
+  }, [foods]);
+  
   return (
     <div className="row">
-      {menu.map((data, index) => (
+      {saladMenu.map((data, index) => (
         <div className="col-6 col-md-3" id="category-card">
           <Cards
             key={index}
@@ -20,7 +27,7 @@ function SaladMenu() {
             portion={data.portion}
             stock={data.stock}
             recipe={data.recipe}
-            image={data.thumb_img}
+            image={data.image}
             category={data.category}
           />
         </div>
