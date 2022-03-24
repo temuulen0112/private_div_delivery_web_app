@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Cards from "./Card";
+import Card from "./Card";
 import { useFood } from "../context/FoodContext";
 
 function Desserts() {
@@ -11,7 +11,6 @@ function Desserts() {
         .filter((p) => {
           return p.category === "Амттан"
         })
-        .slice(0, 4)
     )
   }, [foods]);
 
@@ -27,10 +26,11 @@ function Desserts() {
 
   return (
     <div className="row">
-      {desserts.map((data, index) => {
+      {desserts.map((data) => (
           <div className="col-6 col-md-3" id="category-card">
-            <Cards
-              key={index}
+           
+            <Card
+              key={data._id}
               name={data.name}
               price={data.price}
               portion={data.portion}
@@ -41,7 +41,7 @@ function Desserts() {
               recipe={data.recipe}
             />
           </div>
-      })}
+      ))}
     </div>
   );
 }

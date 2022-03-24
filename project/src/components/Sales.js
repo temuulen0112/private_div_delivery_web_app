@@ -10,9 +10,8 @@ function Sales() {
     setSales(
       foods
         .filter((p) => {
-          return p.category === "Хямдралтай"
+          return p.discount !== 0
         })
-        .slice(0, 4)
     )
   }, [foods]);
 

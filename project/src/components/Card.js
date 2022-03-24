@@ -10,6 +10,7 @@ function CardComponent(props) {
     setFullscreen("sm-down");
     setShow(true);
   }
+  console.log(props.name)
   const [show, setShow] = useState(false);
   const [counter, setCounter] = useState(1);
   const portion = () => {
@@ -108,7 +109,7 @@ function CardComponent(props) {
           id="my-modal"
           className="container row align-items-center pb-5 pe-0 pe-lg-5 my-modal"
         >
-          <div className="img-fluid" className="col-12 col-lg-6 mt-4 mt-lg-0 text-center">
+          <div className="img-fluid col-12 col-lg-6 mt-4 mt-lg-0 text-center">
             <img
               id="modal-img"
               width={475}

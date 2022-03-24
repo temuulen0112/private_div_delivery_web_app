@@ -9,7 +9,7 @@ const Sales = () => {
     setSales(
       foods
         .filter((p) => {
-          return p.category !== "Хямдралтай"
+          return p.discount !== 0
         })
     )
   }, [foods]);
